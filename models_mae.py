@@ -141,7 +141,7 @@ class PCAEViT(nn.Module):
         # split patches into ids_keep and ids_remove
         ids_keep = ids_shuffle[:, :len_keep]
         ids_remove = ids_shuffle[:, len_keep:]
-        x_masked = torch.gather(x, dim=1, index=ids_keep.unsqueeze(-1).repeat(1, 1, D))
+        x_masked = torch.gather(x, dim=1, index=ids_remove.unsqueeze(-1).repeat(1, 1, D))
 
         # generate the binary mask: 0 is keep, 1 is remove
 
